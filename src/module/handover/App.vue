@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    <left-nav></left-nav>
-    <router-view></router-view>
+    <transition name="leftSlide">
+      <left-nav></left-nav>
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
@@ -26,4 +28,14 @@
     color: #2c3e50;
     margin-top: 60px;
   }
+ /*&.leftSlide-enter,&.leftSlide-leave-active{
+    .switchBtn{
+      transform: translateX(0);
+    }
+  }
+  &.leftSlide-enter-active,&.leftSlide-leave{
+    .switchBtn{
+      transform: translateX(40px);
+    }
+  } */
 </style>
