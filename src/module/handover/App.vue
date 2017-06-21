@@ -1,9 +1,7 @@
 <template>
   <div id="app">
-    <transition name="leftSlide">
       <left-nav></left-nav>
       <router-view></router-view>
-    </transition>
   </div>
 </template>
 
