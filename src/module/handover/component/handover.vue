@@ -1,6 +1,6 @@
 <template>
   <div id="handover">
-    handover
+    <router-link to="/handoverList">handover</router-link>
   </div>
 </template>
 <style lang="less" rel="stylesheet/less">
