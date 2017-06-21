@@ -14,6 +14,11 @@ const router = new Router({
       component:handover
     },
     {
+      path:'/',
+      component:handover,
+      redirect:'/handover'
+    },
+    {
       path:'/handoverList',
       component: handoverList
     }
