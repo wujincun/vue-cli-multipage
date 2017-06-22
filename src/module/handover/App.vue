@@ -1,39 +1,62 @@
 <template>
-  <div id="app">
-      <left-nav></left-nav>
-      <router-view></router-view>
-  </div>
+  <transition name="slideLeft">
+    <div id="app">
+      <div class="content" @spreadStatus="spread" :class="spreadStatus?'spread':'off'">
+        <left-nav></left-nav>
+        <router-view :spreadStatus="spreadStatus"></router-view>
+      </div>
+    </div>
+  </transition>
 </template>
-
-<script>
-  import 'common/css/reset.css';
-  import leftNav from 'components/leftNav/leftNav'
-
-  export default {
-    name: 'app',
-    components: {
-      leftNav
-    }
-  }
-</script>
-
 <style lang="less" rel="stylesheet/less">
   #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
+    height: 100%;
+    overflow: hidden;
+    .content{
+      display: flex;
+      transform: translateX(-140px);
+      width: -webkit-calc(~"100% + 140px");
+      &.spread {
+        transition: transform 0.4s;
+        transform: translateX(0);
+      }
+      &.off {
+        transition: transform 0.4s;
+        transform: translateX(-140px);
+      }
+    }
   }
- /*&.leftSlide-enter,&.leftSlide-leave-active{
-    .switchBtn{
+
+  &.leftSlide-enter, &.leftSlide-leave-active {
+    .content{
       transform: translateX(0);
     }
   }
-  &.leftSlide-enter-active,&.leftSlide-leave{
-    .switchBtn{
-      transform: translateX(40px);
+
+  &.leftSlide-enter-active, &.leftSlide-leave {
+    .content{
+      transform: translateX(-140px);
     }
-  } */
+  }
 </style>
+<script type="text/ecmascript-6">
+  import 'common/css/common.less';
+  import leftNav from 'components/leftNav/leftNav';
+  export default{
+    data () {
+      return {
+
+      };
+    },
+    components: {
+      leftNav
+    },
+    methods: {
+      spread(bool){
+        console.log(bool)
+        this.spreadStatus = bool
+      }
+    }
+  };
+
+</script>

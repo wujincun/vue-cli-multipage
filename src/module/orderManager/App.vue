@@ -1,26 +1,19 @@
 <template>
-  <div id="app">
-    <img src="./images/logo.png">
-  </div>
+
 </template>
-
-<script>
-  import 'common/css/reset.css';
-
-  export default {
-    name: 'app',
-    components: {
-    }
-  }
-</script>
-
 <style lang="less" rel="stylesheet/less">
-  #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-  }
+
 </style>
+<script type="text/ecmascript-6">
+    export default{
+        data () {
+            return{
+
+            };
+        },
+        componets:{
+
+        }
+    };
+
+</script>

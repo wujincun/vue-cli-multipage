@@ -1,0 +1,61 @@
+/*CSS重置*/
+body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fildset,table,td,img,div,dl,dt,dd,input{margin:0;padding:0;border:0;box-sizing:border-box}
+body{ font-size:12px;}
+img{border:none;}
+ul,ol{ list-style:none;}
+input,select,textarea{outline:none;}
+textarea{resize:none;}
+a{ text-decoration:none;}
+
+html,body{
+  height: 100%;
+}
+
+/*清浮动*/
+.clearfix:after{content:"";display:block;clear:both;}
+.fl{  float: left;  }
+.fr{float: right}
+
+/*省略号*/
+.ellipsis{
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+/*基本色*/
+/*左导航*/
+@blackColor{
+  color: #3A3A59;
+}
+@blueColor{
+  color: #54548c;
+}
+
+/*一像素边框有问题*/
+.border-1px(@color){
+  position: relative;
+  &:after{
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid @color;
+    content: ''
+  }
+}
+.border-none{
+  &:after{
+    display: none;
+  }
+}
+/*选取图片*/
+.bg-image(@url) {
+  background-image: url('img/@{url}.png');
+  @media (-webkit-min-device-pixel-ratio: 2),(min-device-pixel-ratio: 2) {
+    background-image: url('img/@{url}@2x.png');
+  }
+  @media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3) {
+    background-image: url('img/@{url}@3x.png')
+  }
+}
+
+
