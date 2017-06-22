@@ -2,12 +2,22 @@
   <transition name="slideLeft">
     <div id="handover" :class="spreadStatus?'spread':'off'">
       <left-nav></left-nav>
-      <div class="content">
+      <div class="handoverContainer">
         <div class="handoverHead">
           <div class="leftNavBtn" @click="spreadStatus = !spreadStatus">btn</div>
           <div class="title">交接班</div>
           <router-link to="/handoverList">交接班记录</router-link>
         </div>
+        <div class="handoverContent">
+          <div class="leftDetail">
+
+          </div>
+          <div class="rightOpra">
+            <div class="name">小红</div>
+            <div class="time">交班时间：{{time}}</div>
+          </div>
+        </div>
+
       </div>
     </div>
   </transition>
@@ -28,16 +38,16 @@
       transform: translateX(-140px);
     }
     &.leftSlide-enter, &.leftSlide-leave-active {
-      .content {
+      .handoverContainer {
         transform: translateX(0);
       }
     }
     &.leftSlide-enter-active, &.leftSlide-leave {
-      .content {
+      .handoverContainer {
         transform: translateX(-140px);
       }
     }
-    .content {
+    .handoverContainer {
       width: 960px;
       .handoverHead {
         display: flex;
@@ -54,7 +64,6 @@
         }
       }
     }
-
   }
 </style>
 <script type="text/ecmascript-6">
@@ -62,17 +71,29 @@
   export default{
     data () {
       return {
-        spreadStatus:false
+        spreadStatus:false,
+        time:'',
       };
     },
     props: {
-      spreadStatus: Boolean
     },
     components: {
       leftNav
     },
+    mounted(){
+      setInterval(this.clockTime,1000)
+    },
     methods: {
-
+      clockTime(){
+        let now = new Date();
+        let year = now.getFullYear();
+        let month = now.getMonth()+1;
+        let day = now.getDate();
+        let hour = now.getHours();
+        let minite = now.getMinutes();
+        //let seconds = now.getSeconds();
+        this.time = '' + year +'-'+ month + '-'+ day + ' ' + hour + ':' + minite ;
+      }
     },
   };
 
