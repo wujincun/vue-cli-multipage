@@ -1,23 +1,23 @@
 <template>
   <div id="app">
-      <left-nav></left-nav>
-      <router-view></router-view>
+    <img src="./images/logo.png">
+    <hello></hello>
   </div>
 </template>
 
 <script>
   import 'common/css/reset.css';
-  import leftNav from 'components/leftNav/leftNav'
+  import Hello from 'components/Hello/Hello'
 
   export default {
     name: 'app',
     components: {
-      leftNav
+      Hello
     }
   }
 </script>
 
-<style lang="less" rel="stylesheet/less">
+<style>
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -26,14 +26,4 @@
     color: #2c3e50;
     margin-top: 60px;
   }
- /*&.leftSlide-enter,&.leftSlide-leave-active{
-    .switchBtn{
-      transform: translateX(0);
-    }
-  }
-  &.leftSlide-enter-active,&.leftSlide-leave{
-    .switchBtn{
-      transform: translateX(40px);
-    }
-  } */
 </style>
