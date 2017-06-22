@@ -45,7 +45,7 @@
   export default{
     data () {
       return {
-
+        spreadStatus:false
       };
     },
     components: {
@@ -53,7 +53,7 @@
     },
     methods: {
       spread(bool){
-        console.log(bool)
+        console.log('father'+bool)
         this.spreadStatus = bool
       }
     }
