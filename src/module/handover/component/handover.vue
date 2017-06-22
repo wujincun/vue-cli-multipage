@@ -6,9 +6,8 @@
         <div class="handoverHead">
           <div class="leftNavBtn" @click="spreadStatus = !spreadStatus">btn</div>
           <div class="title">交接班</div>
-          <div class="goLogBtn">交接班记录</div>
+          <router-link to="/handoverList">交接班记录</router-link>
         </div>
-        <router-link to="/handoverList">handover</router-link>
       </div>
     </div>
   </transition>
