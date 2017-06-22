@@ -1,49 +1,80 @@
 <template>
-  <div id="handover">
-    <div class="handoverHead">
-        <div class="leftNavBtn" @click="navSpread">btn</div>
-        <div class="title">交接班</div>
-        <div class="goLogBtn">交接班记录</div>
+  <transition name="slideLeft">
+    <div id="handover" :class="spreadStatus?'spread':'off'">
+      <left-nav></left-nav>
+      <div class="content">
+        <div class="handoverHead">
+          <div class="leftNavBtn" @click="spreadStatus = !spreadStatus">btn</div>
+          <div class="title">交接班</div>
+          <div class="goLogBtn">交接班记录</div>
+        </div>
+        <router-link to="/handoverList">handover</router-link>
+      </div>
     </div>
-    <router-link to="/handoverList">handover</router-link>
-  </div>
+  </transition>
+
 </template>
 <style lang="less" rel="stylesheet/less">
-  #handover{
-    width: 960px;
-    .handoverHead{
-      display: flex;
-      width: 100%;
-      height: 64px;
-      .leftNavBtn{
-/*
-        .bg-image('head_cedaohang')
-*/
-      }
-      .title{
-        flex: 1;
-        text-align: center;
+  #handover {
+    display: flex;
+    transform: translateX(-140px);
+    width: -webkit-calc(~"100% + 140px");
+    height: 100%;
+    &.spread {
+      transition: transform 0.4s;
+      transform: translateX(0);
+    }
+    &.off {
+      transition: transform 0.4s;
+      transform: translateX(-140px);
+    }
+    &.leftSlide-enter, &.leftSlide-leave-active {
+      .content {
+        transform: translateX(0);
       }
     }
+    &.leftSlide-enter-active, &.leftSlide-leave {
+      .content {
+        transform: translateX(-140px);
+      }
+    }
+    .content {
+      width: 960px;
+      .handoverHead {
+        display: flex;
+        width: 100%;
+        height: 64px;
+        .leftNavBtn {
+          /*
+                  .bg-image('head_cedaohang')
+          */
+        }
+        .title {
+          flex: 1;
+          text-align: center;
+        }
+      }
+    }
+
   }
 </style>
 <script type="text/ecmascript-6">
-    export default{
-        data () {
-            return{
+  import leftNav from 'components/leftNav/leftNav';
+  export default{
+    data () {
+      return {
+        spreadStatus:false
+      };
+    },
+    props: {
+      spreadStatus: Boolean
+    },
+    components: {
+      leftNav
+    },
+    methods: {
 
-            };
-        },
-        props:{
-          spreadStatus:Boolean
-        },
-        methods:{
-          navSpread(){
-            this.leftNavStatus = !this.spreadStatus;
-            console.log('child'+ this.leftNavStatus)
-            this.$emit('spreadStatus',this.leftNavStatus)
-          }
-        },
-    };
+    },
+  };
 
 </script>
